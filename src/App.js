@@ -31,7 +31,7 @@ const App = () => {
           <Route path="/tequila" element={<Tequila />} />
           <Route path="/champagne" element={<Champagne />} />
           {/* <Route path="/beer" element={<Beer />} /> */}
-          <Route path="/cocktailSingle" element={<CocktailSingle />} />
+          <Route path="/cocktailSingle/:drinkId" element={<CocktailSingle />} />
           <Route path="/randomCocktail" element={<RandomCocktail />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>

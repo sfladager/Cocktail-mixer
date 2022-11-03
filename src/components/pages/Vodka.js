@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 //bootstrap
 import Container from 'react-bootstrap/Container'
@@ -34,13 +35,6 @@ const Vodka = () => {
     }
     getDrinks()
   }, [])
-  // deconstruct object to pull name and image
-
-
-  //event listener with onClick when someone clicks on a card. 
-  //This takes them to the single drink page
-
-  // In JSX display the images in cards with a map function
 
   return (
     <main className="list-page">
@@ -49,14 +43,15 @@ const Vodka = () => {
           {drinkList.length > 0 && 
           drinkList.map(drink => {
             const { strDrink, strDrinkThumb, idDrink } = drink
-            console.log(idDrink)
             return (
               <Col sm="6" lg="4" className='drink-card mb-4' key={idDrink}>
-                <Card>
-                  <div className="card-image" style={{ backgroundImage: `url(${strDrinkThumb})` }}>
-                  </div>
-                  <Card.Title>{strDrink}</Card.Title>
-                </Card>
+                <Link to={`/cocktailSingle/${idDrink}`}>
+                  <Card>
+                    <div className="card-image" style={{ backgroundImage: `url(${strDrinkThumb})` }}>
+                    </div>
+                    <Card.Title>{strDrink}</Card.Title>
+                  </Card>
+                </Link>
               </Col>
             )
           })}
