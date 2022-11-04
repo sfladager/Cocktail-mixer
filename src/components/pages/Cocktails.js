@@ -9,8 +9,6 @@ import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import axios from 'axios'
 
-// BONUS -> add filter to search by name
-
 const Cocktails = () => {
 
   // state to hold list of drinks
@@ -18,62 +16,63 @@ const Cocktails = () => {
   const [ vodkaList, setVodkaList ] = useState([])
   const [ ginList, setGinList ] = useState([])
   const [ tequilaList, setTequilaList ] = useState([])
+  const [ bourbonList, setBourbonList ] = useState([])
   const [ filteredDrinks, setFilteredDrinks ] = useState([])
   const [ search, setSearch ] = useState('')
   const [ drinksByName, setDrinksByName ] = useState('')
   // state to hold errors if present, set to null initially
-  // const [ errors, setErrors ] = useState(false)
+  // const [ errors, setErrors ] = useState(null)
 
   // get list of drinks with axios using the get request 
   useEffect(() => {
     const getDrinks = async () => {
       try {
-        const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka')
+        const { data } = await axios.get('www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka')
         setVodkaList(data.drinks)
       } catch (err) {
-        console.log(err)
-        // setErrors(true)
+        console.log(err.message)
+        // setErrors(err.)
       }
-    }
-    getDrinks()
-  }, [])
-
-  useEffect(() => {
-    const getMoreDrinks = async () => {
       try {
         const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin')
         setGinList(data.drinks)
       } catch (err) {
-        console.log(err)
+        console.log(err.message)
         // setErrors(true)
       }
       try {
         const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Tequila')
         setTequilaList(data.drinks)
       } catch (err) {
-        console.log(err)
+        console.log(err.message)
+        // setErrors(true)
+      }
+      try {
+        const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Bourbon')
+        setBourbonList(data.drinks)
+      } catch (err) {
+        console.log(err.message)
         // setErrors(true)
       }
     }
-    getMoreDrinks()
+    getDrinks()
   }, [])
 
+  //Creates a new array with all drinks added into it.
   useEffect(() => {
-    setDrinkList([ ...vodkaList, ...ginList, ...tequilaList ])
-  }, [vodkaList, ginList, tequilaList])
+    setDrinkList([ ...vodkaList, ...ginList, ...tequilaList, ...bourbonList])
+  }, [vodkaList, ginList, tequilaList, bourbonList])
 
- 
-
+  // Removes duplicate drinks from the array
   const removeDuplicates = useCallback(() => {
     const removeDupesArr = []
     drinkList.forEach(drink => {
       if (!removeDupesArr.map(drink => drink.idDrink).includes(drink.idDrink))
       removeDupesArr.push(drink)
     })
-    console.log(removeDupesArr)
     setFilteredDrinks(removeDupesArr)
   }, [drinkList])
-
+  // Runs the remove duplicate function
   useEffect(() => {
     removeDuplicates()
   }, [drinkList, removeDuplicates])
@@ -93,6 +92,9 @@ const Cocktails = () => {
     } else if (filtered === 'tequilaList' && drinksByName)  {
       console.log('tequila ->', tequilaList)
       return setFilteredDrinks(tequilaList)
+    } else if (filtered === 'bourbonList' && drinksByName)  {
+      console.log('bourbonList ->', bourbonList)
+      return setFilteredDrinks(bourbonList)
     }
     }
 
@@ -107,16 +109,17 @@ const Cocktails = () => {
         return regex.test(drink.strDrink)
       })
       setDrinksByName(searchName)
-    }, [drinkList, vodkaList, ginList, tequilaList, search, filteredDrinks])
+    }, [drinkList, vodkaList, ginList, tequilaList, search, filteredDrinks, bourbonList])
 
   return (
     <main className="list-page">
       <Container className="mt-4">
         <div className="filter-container mb-3">
-          {drinkList && vodkaList && tequilaList && ginList && filteredDrinks && 
+          {drinkList && vodkaList && tequilaList && ginList && filteredDrinks && bourbonList &&
             <>
               <select onChange={handleChange} name="drink-type" id="drink-type" placeholder="All">
                 <option id="all" value="all">All</option>
+                <option id="bourbon" value="bourbonList">Bourbon</option>
                 <option id="vodka" value="vodkaList">Vodka</option>
                 <option id="gin" value='ginList'>Gin</option>
                 <option id="tequila" value='tequilaList'>Tequila</option>

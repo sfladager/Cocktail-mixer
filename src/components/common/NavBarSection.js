@@ -13,7 +13,7 @@ const NavBarSection = () => {
   return (
     <NavBar expand="sm">
       <Container>
-        <NavBar.Brand as={Link} to="/">🍸 Cocktail Mixer</NavBar.Brand>
+        <NavBar.Brand as={Link} to="/">🍸</NavBar.Brand>
         <NavBar.Toggle aria-controls="basic-navbar-nav" />
         <NavBar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
