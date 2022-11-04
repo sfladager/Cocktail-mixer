@@ -27,7 +27,7 @@ const Cocktails = () => {
   useEffect(() => {
     const getDrinks = async () => {
       try {
-        const { data } = await axios.get('www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka')
+        const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Vodka')
         setVodkaList(data.drinks)
       } catch (err) {
         console.log(err.message)
@@ -133,12 +133,12 @@ const Cocktails = () => {
           drinksByName.map(drink => {
             const { strDrink, strDrinkThumb, idDrink } = drink
             return (
-              <Col xs="10" sm="6" lg="4" className='drink-card mb-4' key={idDrink}>
+              <Col xs="10" sm="6" lg="4" className='drink-card-list mb-4' key={idDrink}>
                 <Link to={`/cocktailSingle/${idDrink}`}>
-                  <Card>
-                    <div className="card-image" style={{ backgroundImage: `url(${strDrinkThumb})` }}>
+                  <Card className="card-list">
+                    <div className="card-image-list" style={{ backgroundImage: `url(${strDrinkThumb})` }}>
                     </div>
-                    <Card.Title>{strDrink}</Card.Title>
+                    <Card.Title className="card-title-list">{strDrink}</Card.Title>
                   </Card>
                 </Link>
               </Col>

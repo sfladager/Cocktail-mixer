@@ -8,6 +8,7 @@ import RandomCocktail from './components/pages/RandomCocktail'
 import NotFound from './components/pages/NotFound'
 import CocktailSingle from './components/pages/CocktailSingle'
 import Cocktails from './components/pages/Cocktails'
+// import Beer from './components/pages/Beer'
 
 
 //import components
@@ -19,9 +20,11 @@ const App = () => {
     <div className="site-wrapper">
       <BrowserRouter>
         <NavBarSection />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cocktails" element={<Cocktails />} />
+          {/* <Route path="/beer" element={<Beer />} /> */}
           <Route path="/cocktailSingle/:drinkId" element={<CocktailSingle />} />
           <Route path="/random" element={<RandomCocktail />} />
           <Route path="/*" element={<NotFound />} />

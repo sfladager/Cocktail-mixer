@@ -1,10 +1,8 @@
-
-
-const NotFound = () => {
-
+function NotFound() {
   return (
-    <main>
-      <h1>Page does not exist! Try another link.</h1>
+    <main className='not-found-page'>
+      <h1>Oops! This part of the bar is closed</h1>
+      <a href="/" className='btn bg-danger bg-red'>Bring me back home</a>
     </main>
   )
 }

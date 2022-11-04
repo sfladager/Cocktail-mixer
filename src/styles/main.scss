@@ -1,5 +1,5 @@
 // Variables
-$primary: #067BC2;
+$primary: #3b71ca;
 $secondary: rgb(239, 239, 240);
 $text: #eeecf5;
 
@@ -15,41 +15,42 @@ main {
   flex-grow: 1;
 }
 
-.btn-main {
-  background-color: $primary;
-  &:hover {
-    border: 1px solid #000;
-  } 
-}
-
-// Navbar
-.navbar {
-  background-color: $primary;
-  .nav-link {
-    color: $text;
-  }
-  .dropdown-menu, .dropdown-item {
-    background-color: $secondary;
-  }
+.list-page {
+  background-image: url(https://miro.medium.com/max/1400/1*2NMN_CIMMltA7uDG5sOwKQ.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 //filter-container
 .filter-container {
   display: flex;
   align-items: stretch;
+
   #search {
     margin-left: 5px;
   }
-  #search, #drink-type {
+
+  #search,
+  #drink-type {
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.15)
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: $primary;
+    color: $text;
+  }
+  ::placeholder {
+    color: $text;
   }
 }
 
 //Card style
-.drink-card {
+.drink-card-list {
   margin: 0 auto;
-  .card-image {
+  :hover {
+    color: #000;
+  }
+
+  .card-image-list {
     height: 200px;
     background-position: center;
     background-repeat: no-repeat;
@@ -57,21 +58,20 @@ main {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
-  .card {
+
+  .card-list {
     border-radius: 8px;
     border: none;
     background-color: $primary;
     color: $text;
   }
-  .card-title {
+  .card-title-list {
     padding: 10px 15px 7px;
   }
   a {
     text-decoration: none;
-    &:hover {
-      color: #000;
-    }
   }
+
 }
 
 // drink single
@@ -80,4 +80,148 @@ main {
   img {
     max-width: 100%;
   }
+}
+
+span {
+  font-style: italic;
+}
+
+
+
+
+
+// CSS GAEL
+
+
+.navbar {
+  background: linear-gradient(rgb(27, 99, 151), rgb(8, 56, 176));
+  height: 5%;
+  .nav-link {
+    color: $text;
+  }
+}
+
+.nav-section {
+  color: white;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.random-page {
+  background-color: rgb(211, 237, 246);
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  color: white;
+  background: linear-gradient(rgb(27, 99, 151), rgb(8, 56, 176));
+  width: 25%;
+  font-size: 1rem;
+  margin: auto;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+
+.drink-card {
+  color: white;
+  text-align: center;
+  margin: auto;
+
+
+  .card {
+    border: none;
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+
+  }
+
+  .card-image {
+    height: 400px;
+    width: 500px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .card-body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 400px;
+    width: 80%;
+    background: linear-gradient(rgb(27, 99, 151), rgb(8, 56, 176));
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
+    padding: auto;
+  }
+}
+
+.card-title {
+  font-size: 1.5rem;
+  padding: 5px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card-text {
+  font-style: italic;
+}
+
+.not-found-page {
+  background-image: url(https://i.pinimg.com/736x/e4/7c/fb/e47cfbccd7500d389c8be33af55b440c.jpg);
+  color: white;
+  display: inline-block;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.hero-page {
+  background-image: url(https://youmedia-cdn.leeds-list.com/wp-content/uploads/2020/02/19154114/east-59th-feb-20-no-credit-2.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  height: 100vh;
+}
+
+.hero-home {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 70%;
+  margin: 0 auto;
+  background-color: rgba(59, 113, 202, 0.5);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  .btn-home {
+    width: 35%;
+    padding: 5px 15px;
+  }
+}
+
+.btn-warning {
+  color: black;
+}
+
+.random-page {
+  background-image: url(https://www.servaclean.co.uk/wp-content/uploads/2018/01/bar-image.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

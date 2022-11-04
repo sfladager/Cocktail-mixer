@@ -8,12 +8,13 @@ import axios from 'axios'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 
 
 const CocktailSingle = () => {
 
   // state to hold list of drinks
-  const [ drinkInfo, setDrinkInfo ] = useState(null)
+  const [drinkInfo, setDrinkInfo] = useState(null)
   // state to hold errors if present, set to null initially
 
 
@@ -28,6 +29,7 @@ const CocktailSingle = () => {
       try {
         const { data } = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
         setDrinkInfo(data.drinks[0])
+        console.log(data)
       } catch (err) {
         console.log(err)
       }
@@ -35,39 +37,46 @@ const CocktailSingle = () => {
     getDrinkInfo()
   }, [drinkId])
 
+  useEffect(() => {
+    console.log(drinkInfo)
+  }, [drinkInfo])
 
   // In JSX display the data pulled from the object specified above
 
   return (
-    <main className="single-drink">
-      <Container className="mt-4">
-        {drinkInfo && 
+    <main className='random-page'>
+      <Container className='mt-4'>
+        {drinkInfo &&
           <Row>
-            <h1 className="mb-4">{drinkInfo.strDrink}</h1>
-            <hr />
-            <Col md="6">
-              <img className="drink-img" src={drinkInfo.strDrinkThumb} alt={drinkInfo.strDrink} />
-            </Col>
-            <Col md="6">
-              <h3>Glass Type</h3>
-              <p>{drinkInfo.strGlass}</p>
-              <hr />
-              <h3>Instructions</h3>
-              <p>{drinkInfo.strInstructions}</p>
-              <hr />
-              <h3>Ingredients</h3>
-              <p>desc</p>
-              <hr />
-              <h3>Measurements</h3>
-              <p>desc</p>
-              <hr />
-              <Link to="/cocktails" className="btn btn-main">Find Another Drink</Link>
-            </Col>
-          </Row>
+            <Col sm="12" md="12" lg="10" className='drink-card mb-4 ml-4 mr-6'>
+              <Card>
+                <div className="card-container">
+                  <div className="card-image" style={{ backgroundImage: `url(${drinkInfo.strDrinkThumb})` }}>
+                  </div>
+                  <Card.Body className='card-body'>
+                    <Card.Title className="card-title mb-0">{drinkInfo.strDrink} <br></br></Card.Title>
+                    <Card.Text>
+                      <p>{drinkInfo.strIngredient1} <span> {drinkInfo.strMeasure1}</span></p>
+                      <p>{drinkInfo.strIngredient2} <span> {drinkInfo.strMeasure2}</span></p>
+                      <p>{drinkInfo.strIngredient3} <span> {drinkInfo.strMeasure3}</span></p>
+                      <p>{drinkInfo.strIngredient4} <span> {drinkInfo.strMeasure4}</span></p>
+                      <p>{drinkInfo.strIngredient5} <span> {drinkInfo.strMeasure5}</span></p>
+                      <p>{drinkInfo.strIngredient6} <span> {drinkInfo.strMeasure6}</span></p>
+                      <p>{drinkInfo.strIngredient7} <span> {drinkInfo.strMeasure7}</span></p>
+                      <p>{drinkInfo.strIngredient8} <span> {drinkInfo.strMeasure8}</span></p>
+                      <p>{drinkInfo.strIngredient9} <span> {drinkInfo.strMeasure9}</span></p>
+                      <p>{drinkInfo.strIngredient10} <span> {drinkInfo.strMeasure10}</span></p>
+                    </Card.Text>
+                    <Card.Text className='card-text mb-0'>&#129347; :   {drinkInfo.strGlass}</Card.Text>
+                  </Card.Body>
+                </div>
+              </Card>
+            </Col >
+            <Link to="/cocktails" className="btn btn-main">Find Another Drink</Link>
+          </Row >
         }
-        
-      </Container>
-    </main>
+      </Container >
+    </main >
   )
 }
 
