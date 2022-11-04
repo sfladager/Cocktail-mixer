@@ -1,6 +1,6 @@
 // Variables
 $primary: #067BC2;
-$secondary: #c9cbd7;
+$secondary: rgb(239, 239, 240);
 $text: #eeecf5;
 
 
@@ -15,8 +15,40 @@ main {
   flex-grow: 1;
 }
 
+.btn-main {
+  background-color: $primary;
+  &:hover {
+    border: 1px solid #000;
+  } 
+}
+
+// Navbar
+.navbar {
+  background-color: $primary;
+  .nav-link {
+    color: $text;
+  }
+  .dropdown-menu, .dropdown-item {
+    background-color: $secondary;
+  }
+}
+
+//filter-container
+.filter-container {
+  display: flex;
+  align-items: stretch;
+  #search {
+    margin-left: 5px;
+  }
+  #search, #drink-type {
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.15)
+  }
+}
+
 //Card style
 .drink-card {
+  margin: 0 auto;
   .card-image {
     height: 200px;
     background-position: center;
@@ -33,5 +65,19 @@ main {
   }
   .card-title {
     padding: 10px 15px 7px;
+  }
+  a {
+    text-decoration: none;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+// drink single
+
+.single-drink {
+  img {
+    max-width: 100%;
   }
 }
