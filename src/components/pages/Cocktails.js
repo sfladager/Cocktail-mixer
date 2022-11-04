@@ -1,5 +1,5 @@
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 
 //bootstrap
@@ -60,16 +60,30 @@ const Cocktails = () => {
 
   useEffect(() => {
     setDrinkList([ ...vodkaList, ...ginList, ...tequilaList ])
-    setFilteredDrinks([ ...vodkaList, ...ginList, ...tequilaList ])
   }, [vodkaList, ginList, tequilaList])
 
-  
+ 
 
+  const removeDuplicates = useCallback(() => {
+    const removeDupesArr = []
+    drinkList.forEach(drink => {
+      if (!removeDupesArr.map(drink => drink.idDrink).includes(drink.idDrink))
+      removeDupesArr.push(drink)
+    })
+    console.log(removeDupesArr)
+    setFilteredDrinks(removeDupesArr)
+  }, [drinkList])
+
+  useEffect(() => {
+    removeDuplicates()
+  }, [drinkList, removeDuplicates])
+
+  // With dropdown menu, searches by alcohol type, and includes text search by name
   const handleChange = (e) => {
     const filtered = e.target.value
     if (filtered === 'all' && drinksByName) {
-      console.log('drinkList ->',filtered)
-      return setFilteredDrinks(drinkList)
+      console.log('drinkList ->',drinkList)
+      return setFilteredDrinks(removeDuplicates)
     } else if (filtered === 'vodkaList' && drinksByName) {
       console.log('vodka list ->', vodkaList)
       return setFilteredDrinks(vodkaList)
@@ -93,7 +107,6 @@ const Cocktails = () => {
         return regex.test(drink.strDrink)
       })
       setDrinksByName(searchName)
-
     }, [drinkList, vodkaList, ginList, tequilaList, search, filteredDrinks])
 
   return (

@@ -7,19 +7,13 @@ import Container from 'react-bootstrap/Container'
 // React components
 import { Link } from 'react-router-dom'
 
-//brand/title 
-//Home
-// cocktail dropdown -> Gin, Vodka, Tequila, Champagne, Beer
-// Use select with options to create dropdown
-
-//BONUS -> register & login
 
 const NavBarSection = () => {
 
   return (
     <NavBar expand="sm">
       <Container>
-        <NavBar.Brand as={Link} to="/">🍸</NavBar.Brand>
+        <NavBar.Brand as={Link} to="/">🍸 Cocktail Mixer</NavBar.Brand>
         <NavBar.Toggle aria-controls="basic-navbar-nav" />
         <NavBar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav>
