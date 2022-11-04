@@ -7,12 +7,6 @@ import Container from 'react-bootstrap/Container'
 // React components
 import { Link } from 'react-router-dom'
 
-//brand/title 
-//Home
-// cocktail dropdown -> Gin, Vodka, Tequila, Champagne, Beer
-// Use select with options to create dropdown
-
-//BONUS -> register & login
 
 const NavBarSection = () => {
 
