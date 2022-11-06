@@ -31,28 +31,25 @@ const Cocktails = () => {
         setVodkaList(data.drinks)
       } catch (err) {
         console.log(err.message)
-        // setErrors(err.)
+    
       }
       try {
         const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin')
         setGinList(data.drinks)
       } catch (err) {
         console.log(err.message)
-        // setErrors(true)
       }
       try {
         const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Tequila')
         setTequilaList(data.drinks)
       } catch (err) {
         console.log(err.message)
-        // setErrors(true)
       }
       try {
         const { data } = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Bourbon')
         setBourbonList(data.drinks)
       } catch (err) {
         console.log(err.message)
-        // setErrors(true)
       }
     }
     getDrinks()

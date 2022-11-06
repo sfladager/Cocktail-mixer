@@ -12,34 +12,24 @@ import Card from 'react-bootstrap/Card'
 
 
 const CocktailSingle = () => {
-
   // state to hold list of drinks
   const [drinkInfo, setDrinkInfo] = useState(null)
-  // state to hold errors if present, set to null initially
-
 
   // useParams to capture ID and input into get request
   const { drinkId } = useParams()
 
-  //Wrap get request in useEffect which is tripped when drinkId is updated
-  // send get request for specific drink by id selected from main list
-  // deconstruct object to pull name, image, instructions, ingredients, glass type, BONUS Measurements
+  // Axios get request to pull single drink info based on drink id from previous page click
   useEffect(() => {
     const getDrinkInfo = async () => {
       try {
         const { data } = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
         setDrinkInfo(data.drinks[0])
-        console.log(data)
       } catch (err) {
         console.log(err)
       }
     }
     getDrinkInfo()
   }, [drinkId])
-
-  useEffect(() => {
-    console.log(drinkInfo)
-  }, [drinkInfo])
 
   // In JSX display the data pulled from the object specified above
 
